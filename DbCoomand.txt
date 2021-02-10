@@ -1,0 +1,218 @@
+CREATE DATABASE DemoPOS
+GO
+USE [DemoPOS]
+GO
+/****** Object:  Table [dbo].[tbCashDrawer]    Script Date: 11-04-2020 02:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbCashDrawer](
+ [ID] [int] IDENTITY(1,1) NOT NULL,
+ [Amount] [decimal](10, 2) NULL,
+ [InvoiceID] [int] NULL,
+ [UserId] [int] NULL,
+ [TransDate] [datetime] NULL,
+PRIMARY KEY CLUSTERED
+(
+ [ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbCategory]    Script Date: 11-04-2020 02:18:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbCategory](
+ [ID] [int] IDENTITY(1,1) NOT NULL,
+ [Category] [varchar](30) NULL,
+ [DeptId] [int] NULL,
+PRIMARY KEY CLUSTERED
+(
+ [ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbCity]    Script Date: 11-04-2020 02:18:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbCity](
+ [ID] [int] IDENTITY(1,1) NOT NULL,
+ [CityName] [varchar](30) NULL,
+ [StateId] [int] NULL,
+PRIMARY KEY CLUSTERED
+(
+ [ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbCustomer]    Script Date: 11-04-2020 02:18:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbCustomer](
+ [ID] [int] IDENTITY(1,1) NOT NULL,
+ [FirstName] [varchar](20) NULL,
+ [LastName] [varchar](20) NULL,
+ [MobileNo] [varchar](10) NULL,
+ [Email] [varchar](50) NULL,
+ [StateId] [int] NULL,
+ [CityId] [int] NULL,
+ [Address] [varchar](50) NULL,
+ [PinCode] [int] NULL,
+ [RegDate] [date] NULL,
+PRIMARY KEY CLUSTERED
+(
+ [ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbDepartment]    Script Date: 11-04-2020 02:18:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbDepartment](
+ [ID] [int] IDENTITY(1,1) NOT NULL,
+ [DeptName] [varchar](30) NULL,
+PRIMARY KEY CLUSTERED
+(
+ [ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbDetailedInvoice]    Script Date: 11-04-2020 02:18:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbDetailedInvoice](
+ [ID] [int] IDENTITY(1,1) NOT NULL,
+ [ItemId] [int] NULL,
+ [Quantity] [int] NULL,
+ [Discount] [decimal](10, 2) NULL,
+ [Tax] [decimal](10, 2) NULL,
+ [Price] [decimal](10, 2) NULL,
+ [TotalAmount] [decimal](10, 2) NULL,
+ [InvId] [int] NULL,
+ [InvDate] [date] NULL,
+ [ItemPrice] [decimal](10, 2) NULL,
+ [TaxId] [int] NULL,
+ [DiscountId] [int] NULL,
+PRIMARY KEY CLUSTERED
+(
+ [ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbInvoice]    Script Date: 11-04-2020 02:18:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbInvoice](
+ [ID] [int] IDENTITY(1,1) NOT NULL,
+ [ItemTotal] [int] NULL,
+ [Discount] [decimal](10, 2) NULL,
+ [Tax] [decimal](10, 2) NULL,
+ [Price] [decimal](10, 2) NULL,
+ [TotalAmount] [decimal](10, 2) NULL,
+ [CustomerId] [int] NULL,
+ [UserId] [int] NULL,
+ [InvDate] [date] NULL,
+ [isRefund] [bit] NULL,
+ [PreviousInvId] [int] NULL,
+PRIMARY KEY CLUSTERED
+(
+ [ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbItem]    Script Date: 11-04-2020 02:18:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbItem](
+ [ID] [int] IDENTITY(1,1) NOT NULL,
+ [LookupCode] [varchar](20) NULL,
+ [ItemName] [varchar](20) NULL,
+ [DeptId] [int] NULL,
+ [CateId] [int] NULL,
+ [Cost] [decimal](10, 2) NULL,
+ [Price] [decimal](10, 2) NULL,
+ [Quantity] [int] NULL,
+ [UOM] [varchar](10) NULL,
+ [Weight] [decimal](10, 2) NULL,
+ [TaxID] [int] NULL,
+ [IsDiscountItem] [bit] NULL,
+ [EntryDate] [date] NULL,
+PRIMARY KEY CLUSTERED
+(
+ [ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbState]    Script Date: 11-04-2020 02:18:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbState](
+ [ID] [int] IDENTITY(1,1) NOT NULL,
+ [StateName] [varchar](30) NULL,
+PRIMARY KEY CLUSTERED
+(
+ [ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbTax]    Script Date: 11-04-2020 02:18:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbTax](
+ [ID] [int] IDENTITY(1,1) NOT NULL,
+ [TaxPercentage] [decimal](10, 2) NULL,
+ [Name] [varchar](20) NULL,
+PRIMARY KEY CLUSTERED
+(
+ [ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbUser]    Script Date: 11-04-2020 02:18:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbUser](
+ [ID] [int] IDENTITY(1,1) NOT NULL,
+ [FirstName] [varchar](20) NULL,
+ [LastName] [varchar](20) NULL,
+ [Username] [varchar](20) NULL,
+ [Password] [varchar](20) NULL,
+ [MobileNo] [varchar](10) NULL,
+ [Email] [varchar](50) NULL,
+ [IsActive] [bit] NULL,
+ [RegDate] [date] NULL,
+PRIMARY KEY CLUSTERED
+(
+ [ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[tbCategory]  WITH CHECK ADD FOREIGN KEY([DeptId])
+REFERENCES [dbo].[tbDepartment] ([ID])
+GO
+ALTER TABLE [dbo].[tbCity]  WITH CHECK ADD FOREIGN KEY([StateId])
+REFERENCES [dbo].[tbState] ([ID])
+GO
+ALTER TABLE [dbo].[tbItem]  WITH CHECK ADD FOREIGN KEY([TaxID])
+REFERENCES [dbo].[tbTax] ([ID])
+GO

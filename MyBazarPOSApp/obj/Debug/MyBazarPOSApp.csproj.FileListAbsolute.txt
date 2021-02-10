@@ -1,0 +1,10 @@
+D:\ASP.NET_Project\MyBazarPOS\MyBazarPOSApp\bin\Debug\MyBazarPOSApp.exe.config
+D:\ASP.NET_Project\MyBazarPOS\MyBazarPOSApp\bin\Debug\MyBazarPOSApp.exe
+D:\ASP.NET_Project\MyBazarPOS\MyBazarPOSApp\bin\Debug\MyBazarPOSApp.pdb
+D:\ASP.NET_Project\MyBazarPOS\MyBazarPOSApp\obj\Debug\MyBazarPOSApp.csprojAssemblyReference.cache
+D:\ASP.NET_Project\MyBazarPOS\MyBazarPOSApp\obj\Debug\MyBazarPOSApp.frmLogin.resources
+D:\ASP.NET_Project\MyBazarPOS\MyBazarPOSApp\obj\Debug\MyBazarPOSApp.Properties.Resources.resources
+D:\ASP.NET_Project\MyBazarPOS\MyBazarPOSApp\obj\Debug\MyBazarPOSApp.csproj.GenerateResource.cache
+D:\ASP.NET_Project\MyBazarPOS\MyBazarPOSApp\obj\Debug\MyBazarPOSApp.csproj.CoreCompileInputs.cache
+D:\ASP.NET_Project\MyBazarPOS\MyBazarPOSApp\obj\Debug\MyBazarPOSApp.exe
+D:\ASP.NET_Project\MyBazarPOS\MyBazarPOSApp\obj\Debug\MyBazarPOSApp.pdb
