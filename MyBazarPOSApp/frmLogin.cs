@@ -37,6 +37,8 @@ namespace MyBazarPOSApp
                 if (dataTable != null && dataTable.Rows.Count>0)
                 {
                     MessageBox.Show("Login successfull.", "Rezaul POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.ShowDialog();
 
                 }
                 else
